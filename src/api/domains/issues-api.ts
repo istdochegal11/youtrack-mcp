@@ -242,7 +242,7 @@ export class IssuesAPIClient extends BaseAPIClient {
       
       const queryParams = {
         query: params.query,
-        fields: params.fields || IssueFields.SEARCH, // Use optimized search fields
+        fields: (Array.isArray(params.fields) ? params.fields.join(',') : params.fields) || IssueFields.SEARCH, // Use optimized search fields
         $top: params.limit || 50,
         $skip: params.skip || 0
       };
